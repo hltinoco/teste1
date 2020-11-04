@@ -28,9 +28,8 @@ namespace YClient_htinoco2
         {            
             services.AddRazorPages();
 
-            var connection = Configuration["DefaultConnection"];
-            services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connection));
+            string connectionString = Configuration.GetConnectionString("default");
+            services.AddDbContext<Valoresc>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
