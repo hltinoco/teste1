@@ -8,7 +8,7 @@ using YClient_htinoco2.Models;
 
 namespace YClient_htinoco2.Migrations
 {
-    [DbContext(typeof(Valoresc))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20201104122711_InitialCreate")]
     partial class InitialCreate
     {

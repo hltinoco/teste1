@@ -7,7 +7,7 @@ using YClient_htinoco2.Models;
 
 namespace YClient_htinoco2.Migrations
 {
-    [DbContext(typeof(Valoresc))]
+    [DbContext(typeof(ApplicationContext))]
     partial class ValorescModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

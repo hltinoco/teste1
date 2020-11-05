@@ -14,7 +14,7 @@ using YClient_htinoco2.Models;
 
 namespace YClient_htinoco2
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -29,11 +29,13 @@ namespace YClient_htinoco2
             services.AddRazorPages();
 
             string connectionString = Configuration.GetConnectionString("default");
-            services.AddDbContext<Valoresc>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddTransient<IDataService, DataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -59,6 +61,8 @@ namespace YClient_htinoco2
             {
                 endpoints.MapRazorPages();
             });
+
+            serviceProvider.GetService<IDataService>().InicializaDB();
         }
     }
 }
